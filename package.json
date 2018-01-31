@@ -1,0 +1,72 @@
+{
+  "name": "node-starter-project",
+  "version": "0.1.0",
+  "main": "node-starter-project.js",
+  "private": true,
+  "scripts": {
+    "build": "sh ./tasks/build.sh",
+    "git:version": "git-rev VERSION",
+    "lint": "eslint src test",
+    "lint:fix": "eslint src test --fix",
+    "start": "node .",
+    "start:watch": "nodemon .",
+    "start:debug": "node --inspect=5858 .",
+    "test": "export NODE_ENV=test && npm run lint && npm run git:version && node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive",
+    "test:app": "export NODE_ENV=test && npm run git:version && node ./node_modules/.bin/_mocha --recursive",
+    "test:debug": "export NODE_ENV=test && node --inspect-brk=5858 ./node_modules/.bin/_mocha --recursive -t 10000",
+    "tdd": "npm run test:app -- --watch"
+  },
+  "dependencies": {
+    "bluebird": "~3.4.6",
+    "body-parser": "~1.18.2",
+    "config": "~1.24.0",
+    "content-disposition": "~0.5.2",
+    "cookie-parser": "~1.4.0",
+    "cors": "2.8.3",
+    "dependable": "~0.2.5",
+    "express": "~4.14.0",
+    "flat": "~4.0.0",
+    "http-errors": "~1.5.1",
+    "jsonwebtoken": "~5.0.1",
+    "lodash": "~4.17.2",
+    "morgan": "~1.9.0",
+    "newrelic": "~1.34.0",
+    "node-uuid": "~1.4.1",
+    "osprey": "~0.3.2",
+    "osprey-middleware": "~0.1.0",
+    "request": "2.81.0",
+    "semver": "~5.3.0",
+    "superagent": "~3.8.2",
+    "superagent-promise": "~1.1.0",
+    "url": "0.11.0",
+    "winston": "~2.3.0",
+    "winston-syslog": "~1.2.4"
+  },
+  "devDependencies": {
+    "chai": "~4.1.2",
+    "chai-as-promised": "~7.1.1",
+    "coveralls": "~3.0.0",
+    "eslint": "~3.10.2",
+    "eslint-config-airbnb-base": "~10.0.1",
+    "eslint-plugin-import": "~2.2.0",
+    "faker": "~3.1.0",
+    "git-rev-cli": "~0.1.0",
+    "istanbul": "~0.4.5",
+    "mocha": "~4.1.0",
+    "nock": "~9.0.2",
+    "nodemon": "~1.14.10",
+    "sinon": "~4.1.3",
+    "sinon-chai": "~2.14.0",
+    "supertest": "~3.0.0"
+  },
+  "engines": {
+    "node": "8.9.3",
+    "npm": "5.6.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*"
+    ],
+    "delay": "2500"
+  }
+}

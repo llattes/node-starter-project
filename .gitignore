@@ -1,0 +1,11 @@
+.DS_Store
+.tmp
+.vscode
+artifact
+config/local.js
+coverage
+dist
+node_modules
+newrelic_agent.log
+npm-debug.log
+VERSION

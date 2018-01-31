@@ -1,0 +1,23 @@
+#%RAML 0.8
+title: Node.js starter project
+baseUri: http://localhost:8088/{version}
+version: v1
+mediaType: application/json
+
+/status:
+  /echo:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include responses/echo.json
+
+  /version:
+      get:
+        description: Retrieves the date and commit of the deployed version.
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include responses/version.json
