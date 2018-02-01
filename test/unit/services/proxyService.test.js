@@ -4,23 +4,16 @@ const container = testContainerFactory.createContainer();
 
 describe('proxyService', container.describe(() => {
   let buffer;
-  let proxyBuilderGateway;
-  let proxyHelper;
   let proxyService;
 
   beforeEach(function () {
-    proxyBuilderGateway = this.container.get('proxyBuilderGateway');
-    proxyHelper         = this.container.get('proxyHelper');
     proxyService        = this.container.get('proxyService');
-
-    this.sinon.stub(proxyBuilderGateway, 'createProxy').resolves(buffer = 'theContent');
   });
 
   describe('get', () => {
     let context;
     let environmentApi;
     let promise;
-    let proxyRequest;
 
     beforeEach(() => {
       context        = {
@@ -54,14 +47,8 @@ describe('proxyService', container.describe(() => {
         }
       };
 
-      proxyRequest   = proxyHelper.createProxyRequest(environmentApi);
-
       return promise = proxyService.get(context, environmentApi);
     });
-
-    it('proxyBuilderGateway.createProxy should have been called', () =>
-      proxyBuilderGateway.createProxy.should.have.been.calledWith(context, proxyRequest)
-    );
 
     it('should return the environments', () =>
       promise.should.eventually.be.deep.equal({ name: 'http_for_proxies_testing-v1-some_label', buffer })

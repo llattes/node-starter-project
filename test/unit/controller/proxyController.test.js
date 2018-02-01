@@ -10,7 +10,6 @@ describe('proxyController', container.describe(() => {
   let next;
   let proxyController;
   let proxyService;
-  let redirectController;
   let req;
   let res;
 
@@ -18,7 +17,6 @@ describe('proxyController', container.describe(() => {
     apiPlatformGateway = this.container.get('apiPlatformGateway');
     proxyController    = this.container.get('proxyController');
     proxyService       = this.container.get('proxyService');
-    redirectController = this.container.get('redirectController');
 
     req                = {
       context: {
@@ -40,7 +38,6 @@ describe('proxyController', container.describe(() => {
 
     this.sinon.stub(apiPlatformGateway, 'getEnvironmentApi').returns(endDefer.promise);
     this.sinon.stub(proxyService,       'get').returns(getDefer.promise);
-    this.sinon.stub(redirectController, 'getProxy');
   });
 
   describe('get', () => {
@@ -71,19 +68,6 @@ describe('proxyController', container.describe(() => {
 
       it('should call res.send', () =>
         promise.then(() => res.send.should.have.been.calledWith(result.buffer))
-      );
-    });
-
-    describe('when not mule 4', () => {
-      beforeEach(() => {
-        promise = proxyController.get(req);
-        endDefer.resolve({
-          endpoint: { muleVersion4OrAbove: false }
-        });
-      });
-
-      it('should have called redirectController', () =>
-        promise.then(() => redirectController.getProxy.should.have.been.called)
       );
     });
   });

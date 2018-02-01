@@ -11,6 +11,7 @@ function createContainer() {
     'app.js',
     'config.js',
     'controllers',
+    'db',
     'gateways',
     'logger.js',
     'middlewares',

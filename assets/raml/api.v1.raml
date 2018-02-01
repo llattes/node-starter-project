@@ -14,10 +14,10 @@ mediaType: application/json
               example: !include responses/echo.json
 
   /version:
-      get:
-        description: Retrieves the date and commit of the deployed version.
-        responses:
-          200:
-            body:
-              application/json:
-                example: !include responses/version.json
+    get:
+      description: Retrieves the date and commit of the deployed version.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include responses/version.json

@@ -6,7 +6,6 @@ module.exports = function apiV1Router(
   authenticationMiddleware,
   deploymentController,
   proxyController,
-  redirectController,
   statusController
 ) {
   // eslint-disable-next-line new-cap
@@ -33,32 +32,12 @@ module.exports = function apiV1Router(
       authenticationMiddleware.setEnvironmentId
     )
 
-    .get('/ch-domains/:domainName',
-      redirectController.get
-    )
-
-    .get('/organizations/:organizationId/deployment-targets',
-      redirectController.get
-    )
-
     .get('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/proxy',
       proxyController.get
     )
 
-    .post('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/active',
-      redirectController.post
-    )
-
-    .get('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/deployments',
-      redirectController.get
-    )
-
     .post('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/deployments',
       deploymentController.post
-    )
-
-    .get('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/deployments/:proxyDeploymentId',
-      redirectController.get
     )
 
     .put('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/deployments/:proxyDeploymentId',
@@ -67,10 +46,6 @@ module.exports = function apiV1Router(
 
     .patch('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/deployments/:proxyDeploymentId',
       deploymentController.patch
-    )
-
-    .get('/organizations/:organizationId/environments/:environmentId/apis/:environmentApiId/deployments/:proxyDeploymentId/status',
-      redirectController.get
     )
 
     // Status echo endpoint

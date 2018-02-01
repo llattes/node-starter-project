@@ -1,7 +1,6 @@
 module.exports = function proxyController(
   apiPlatformGateway,
-  proxyService,
-  redirectController
+  proxyService
 ) {
   return {
     get
@@ -18,7 +17,7 @@ module.exports = function proxyController(
             })
           ;
         }
-        return redirectController.getProxy(req, res);
+        return null;
       })
       .catch(next)
     ;

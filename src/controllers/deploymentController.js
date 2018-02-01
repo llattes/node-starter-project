@@ -2,8 +2,7 @@ const semver = require('semver');
 
 module.exports = function deploymentController(
   constants,
-  deploymentService,
-  redirectController
+  deploymentService
 ) {
   return {
     patch,
@@ -23,7 +22,7 @@ module.exports = function deploymentController(
         .catch(next);
     }
 
-    return redirectController.patch(req, res);
+    return null;
   }
 
   function post(req, res, next) {
@@ -38,7 +37,7 @@ module.exports = function deploymentController(
         .catch(next);
     }
 
-    return redirectController.post(req, res);
+    return null;
   }
 
   function put(req, res, next) {
@@ -53,6 +52,6 @@ module.exports = function deploymentController(
         .catch(next);
     }
 
-    return redirectController.put(req, res);
+    return null;
   }
 };

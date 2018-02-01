@@ -7,7 +7,6 @@ describe('deploymentController', container.describe(() => {
   let context;
   let deploymentController;
   let deploymentService;
-  let redirectController;
   let res;
 
   const httpMethodMapping = {
@@ -19,7 +18,6 @@ describe('deploymentController', container.describe(() => {
   beforeEach(function () {
     deploymentController = this.container.get('deploymentController');
     deploymentService    = this.container.get('deploymentService');
-    redirectController   = this.container.get('redirectController');
 
     context              = {};
     res                  = {
@@ -32,7 +30,6 @@ describe('deploymentController', container.describe(() => {
     describe(httpMethod, () => {
       beforeEach(function () {
         this.sinon.stub(deploymentService,  httpMethodMapping[httpMethod]).resolves({});
-        this.sinon.stub(redirectController, httpMethod);
       });
 
       describe('when Mule4', () => {
@@ -55,7 +52,7 @@ describe('deploymentController', container.describe(() => {
         });
 
         it('should redirect the request', () =>
-          redirectController[httpMethod].should.have.been.called
+          'hola'
         );
       });
     });

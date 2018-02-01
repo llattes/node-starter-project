@@ -2,11 +2,20 @@
 
 ## Pre-requisites
 
-Requires node.js `v8.9.3` and npm `5.5.1`.
+- Requires node.js `v8.9.3` and npm `5.6.0`.
+- Requires PostgreSQL (v9.4.x recommended).
 
 ## Instalation and development
 
-After cloning the project and ensuring you're running Node.js 8 and npm 5, you can run the following npm scripts:
+### Database Initialization
+
+Create the development database. You will only need to run these command once.
+
+```
+psql --username=postgres --command='CREATE DATABASE "node-starter-project";'
+```
+
+After cloning the project, ensuring you're running Node.js 8 and npm 5 and initializing the DB, you can run the following npm scripts:
 
 ### Install dependencies
 

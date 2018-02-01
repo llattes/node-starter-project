@@ -20,60 +20,34 @@ module.exports = {
   },
 
   authorization: {
-    token:          'proxiesXapiServiceToken',
+    token:          'someAuthToken',
     anonymousPaths: [
       '/status/echo',
       '/status/version'
     ]
   },
 
-  analytics: {
-    ingestUri: _.get(process.env, 'ANALYTICS_INGEST_URI', 'https://analytics-ingest-qax.anypoint.mulesoft.com')
+  database: {
+    debug:      false,
+    client:     'pg',
+    connection: {
+      host:     process.env.DATABASE_HOST || null,
+      user:     process.env.DATABASE_USER || null,
+      password: process.env.DATABASE_PASS || null,
+      database: 'node_starter_project',
+      charset:  'utf8'
+    }
   },
 
-  platform: {
-    baseUri: _.get(process.env, 'ANYPOINT_PLATFORM_BASE_URI', 'https://qax.anypoint.mulesoft.com')
-  },
-
-  apiManager: {
-    baseUri:         _.get(process.env, 'AM_API_BASE_URI', 'https://qax.anypoint.mulesoft.com'),
-    timeout:         10000,
-    apiV1Path:       '/apimanager/api/v1',
-    proxiesXapiPath: '/proxies/xapi/v1',
-    v2ApiPath:       '/apiplatform/repository/v2'
-  },
-
-  cloudhub: {
-    baseUri:                  _.get(process.env, 'CH_SITE_API_BASE_URI', 'https://qax.anypoint.mulesoft.com/cloudhub'),
-    supportedRuntimeVersions: '>=4.0.0',
-    timeout:                  10000,
-    workerType:               'Micro'
-  },
-
-  csSiteApi: {
-    baseUri: _.get(process.env, 'CS_SITE_API_BASE_URI', 'https://qax.anypoint.mulesoft.com/accounts'),
-    timeout: 10000
+  externalService: {
+    baseUri: _.get(process.env, 'EXT_SVC_BASE_URI', 'https://<<add-some-public-api-here>>'),
+    timeout: 10000,
+    apiPath: '/<<add-some-path-here>>>',
   },
 
   express: {
     host: '0.0.0.0',
     port: _.get(process.env, 'PORT', 8080)
-  },
-
-  hybrid: {
-    baseUri: _.get(process.env, 'HY_SITE_API_BASE_URI', 'https://qax.anypoint.mulesoft.com/hybrid'),
-    timeout: 10000
-  },
-
-  proxyBuilder: {
-    baseUri:          _.get(process.env, 'PROXY_BUILDER_BASE_URI', 'http://localhost:3000/v1'),
-    templateVersions: {
-      HTTP:  '1.0.0',
-      HTTPS: '1.0.0',
-      RAML:  '1.0.0',
-      WSDL:  '1.0.0'
-    },
-    timeout:          10000
   },
 
   logger: {
